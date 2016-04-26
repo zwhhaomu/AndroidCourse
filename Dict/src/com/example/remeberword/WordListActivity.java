@@ -23,28 +23,37 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
 
-public class WordListActivity extends Activity  {
+public class WordListActivity extends Activity implements SensorEventListener {
 	WordDBHelper dbhelper;
+	BitmapDrawable andy;
+	private SensorManager sensorManager;
 	ListView listView;
 	Cursor c;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
+		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.wordlist);
 		listView=(ListView) findViewById(R.id.wordlist);
+		sensorManager = (SensorManager)getSystemService(Context.SENSOR_SERVICE);
 		dbhelper=new WordDBHelper(this);
-		c = dbhelper.query();
+		refreshword();
 		String[] from = {"_id", "word", "detail"};
 		int[] to = { R.id.textid,R.id.textword, R.id.textdetail};
 		SimpleCursorAdapter adapter = new SimpleCursorAdapter(getApplicationContext(),
-				R.layout.row, c, from, to);	
-		listView.setAdapter(adapter);		
+				R.layout.row, c, from, to);
+		
+		listView.setAdapter(adapter);
+		andy = (BitmapDrawable) getResources().getDrawable(R.drawable.bg);
+
+		
 		listView.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
 					long arg3) {
+				
 				TextView textid=(TextView)arg1.findViewById(R.id.textid);
 				TextView textword=(TextView)arg1.findViewById(R.id.textword);
 				TextView textdetail=(TextView)arg1.findViewById(R.id.textdetail);
@@ -56,6 +65,14 @@ public class WordListActivity extends Activity  {
 			}
 		});
 	}
+	
+	private void refreshword() {
+		
+		c = dbhelper.query();
+		
+		
+	}
+
 	// 显示对话框
 		private void exitAlert(final int id1,final String word,final String detail ){
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -92,7 +109,39 @@ public class WordListActivity extends Activity  {
 			AlertDialog alert = builder.create();
 			alert.show();
 		}
+		@Override
+		protected void onResume() {
+			super.onResume();
+			sensorManager.registerListener(this,
+					sensorManager.getDefaultSensor(Sensor.TYPE_LIGHT),
+					SensorManager.SENSOR_DELAY_UI);
+
+		}
+		@Override
+		protected void onStop() {
+			sensorManager.unregisterListener(this);
+			super.onStop();
+		}
+		public void onAccuracyChanged(Sensor sensor, int accuracy) {
+		}
+		public void onSensorChanged(SensorEvent e) {
+			
+			
+			int accury=e.accuracy;
+			int value=(int)e.values[0];
+			System.out.print(value);
+			if(value>=800){
+				
+				andy.setAlpha(100);
+			}
+			else 
+			{
+				
 		
+				andy.setAlpha(255);
+			}
+			listView.setBackgroundDrawable(andy);
+		}
 
 		
 
