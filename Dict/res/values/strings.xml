@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_regist">RegistActivity</string>
+    <string name="title_activity_userlogin">UserloginActivity</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="title_activity_fullscreen">FullscreenActivity</string>
+    
+    <string name="app_name">我爱记单词</string>
+    <string name="title">单词录入</string>
+    <string name="wordshow">单词查看</string>
+    <string name="menu_settings">Settings</string>
+    <string name="btnok">添加</string>
+    <string name="btnSave">保存</string>
+    <string name="btnsearch">查看</string>
+    <string name="btnupdate">更新</string>
+    <string name="btndelete">删除</string>
+    <string name="word">单词：</string>
+    <string name="detail">解析：</string>
+    <string name="btnprior">前一条</string>
+    <string name="btnnext">后一条</string>
+     <string name="editWord">编辑单词</string>
+     <string name="updateword">单词重新 下载</string>
+    
+
+</resources>

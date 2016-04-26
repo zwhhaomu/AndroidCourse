@@ -1,0 +1,78 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical" >
+
+        <TableLayout
+            android:id="@+id/userlogin"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:background="@drawable/background"
+            android:gravity="bottom"
+            android:paddingLeft="30dp"
+            android:paddingRight="30dp"
+            android:paddingTop="20dp"
+            android:stretchColumns="1"
+            android:visibility="visible" >
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用户名称："
+                    android:textColor="@color/white" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/userEditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="admin" >
+                </EditText>
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/TextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="用户密码："
+                    android:textColor="@color/white" >
+                </TextView>
+
+                <EditText
+                    android:id="@+id/pwdEditText"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:password="true"
+                    android:text="1" >
+                </EditText>
+            </TableRow>
+
+            <TableRow android:gravity="right" >
+
+                <Button
+                    android:id="@+id/loginButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="登陆" />
+
+                <Button
+                    android:id="@+id/regButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="注册新用户" />
+            </TableRow>
+        </TableLayout>
+    </LinearLayout>
+
+</RelativeLayout>
